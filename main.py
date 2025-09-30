@@ -1,6 +1,7 @@
 
 # run "source .venv/bin/activate" in command line first
 
+import sys
 import pygame
 from constants import *  # imports everything, generallly not a good idea but okay for small projects
 from player import Player 
@@ -34,6 +35,12 @@ def main():
                 return
             
         updatable.update(dt)
+
+        for asteroid in asteroids:
+            if asteroid.collision(player):
+                print("Game over!")
+                sys.exit()
+
 
         screen.fill("black")
 
